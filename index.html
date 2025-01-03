@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+    <script type="module" src="script.js"></script>
+
+    <title>The Kitschen</title>
+</head>
+
+<body>
+    <main>
+        <div class="bg"><img src="kitchen.svg"></div>
+        <h1>THE <span>KITSCH</span>EN</h1>
+        <form action="" autocomplete="off">
+            <input type="text" id="input" name="meal" placeholder="Search for a meal...">
+            <button id="button">SEARCH</button>
+        </form>
+        <p id="result-msg"></p>
+        <div class="search-results">
+        </div>
+        <div class="modal">
+            <div class="modal-main">
+                <div class="modal-thumb-container">
+                    <img src="" alt="" class="modal-thumb">
+                </div>
+                <div class="modal-content-container">
+                    <h2 class="modal-title"></h2>
+                    <div class="modal-ingredients">
+                        <div class="ingredients-image-container">
+
+                        </div>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <p class="modal-instructions"></p>
+                </div>
+                <span class="fa-stack fa-2x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <button class="modal-close fas fa-times fa-stack-1x fa-inverse"></button>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2024 The Kitschen</p>
+    </footer>
+</body>
+
+</html>

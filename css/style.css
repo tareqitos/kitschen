@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scrollbar-color: orange transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bg img {
+  position: absolute;
+  max-width: 30vw;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+}
+
+main {
+  flex: 1;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0 100px;
+  padding: 0;
+  background-color: #f0f0f0;
+  flex: 1;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(71, 71, 71);
+  font-size: 60px;
+  margin: 50px 0;
+}
+h1 span {
+  color: orange;
+}
+
+form {
+  background: rgb(255, 255, 255);
+  width: fit-content;
+  margin: auto;
+  padding: 10px 20px;
+  padding-right: 10px;
+  border-radius: 50px;
+}
+form input {
+  border: none;
+}
+form input:focus {
+  outline: none;
+}
+form button {
+  color: white;
+  border: none;
+  background: orange;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: padding 0.3s ease;
+}
+form button:hover {
+  padding: 10px 20px;
+}
+
+#result-msg {
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255, 0, 0, 0.657);
+}
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  margin: 50px 0;
+  transition: all 0.3s ease;
+}
+.search-results .card {
+  background-color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.search-results .card:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.05);
+}
+.search-results .card .thumbnail {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+.search-results .card .thumbnail img {
+  width: 101%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+.search-results .card .text-parent {
+  padding: 15px 20px;
+}
+.search-results .card .text-parent h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.search-results .card .text-parent p {
+  font-size: 14px;
+  color: orange;
+}
+
+.modal {
+  display: none;
+  background: rgba(0, 0, 0, 0.3);
+  background-size: auto;
+  background-size: auto;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.modal-main {
+  width: 70vw;
+  height: 90vh;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: scroll;
+  scrollbar-color: orange transparent;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  background: white;
+}
+.modal-main .modal-thumb-container {
+  height: 300px;
+  overflow: hidden;
+}
+.modal-main .modal-thumb-container .modal-thumb {
+  position: relative;
+  width: 100%;
+  bottom: 50%;
+}
+.modal-main .modal-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 30px;
+}
+.modal-main .modal-content-container h2 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  width: fit-content;
+}
+.modal-main .modal-content-container .modal-ingredients {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: fit-content;
+  position: relative;
+  gap: 20px;
+}
+.modal-main .modal-content-container .modal-ingredients img {
+  width: 60px;
+}
+.modal-main .modal-content-container .modal-ingredients ul {
+  margin-left: 15px;
+}
+.modal-main .modal-content-container .modal-ingredients .hover-box {
+  display: none;
+  width: fit-content;
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-weight: 500;
+}
+.modal-main .modal-content-container .modal-ingredients .hover-box span {
+  padding-top: 2px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  font-weight: normal;
+}
+.modal-main .modal-content-container .modal-ingredients .active {
+  opacity: 1;
+}
+.modal-main .modal-content-container p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.modal-main .fa-stack {
+  position: absolute;
+  line-height: normal;
+  height: 1em;
+  width: 1em;
+  top: 30px;
+  right: 30px;
+}
+.modal-main .fa-stack .fa-circle::before {
+  display: none;
+}
+.modal-main button {
+  height: 100%;
+  border: none;
+  border-radius: 100%;
+  color: white;
+  background-color: orange;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.modal-main button:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+}
+footer hr {
+  color: rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+  background: orange;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+@media (max-width: 1200px) {
+  .search-results {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  body {
+    margin: 0 75px;
+  }
+  .search-results {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .modal-main {
+    width: 90vw;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    margin: 0 35px;
+  }
+  .modal-main .modal-thumb-container .modal-thumb {
+    bottom: unset;
+  }
+  .modal-main .ingredients-image-container {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .search-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 428px) {
+  body {
+    margin: 0 25px;
+  }
+  h1 {
+    font-size: 45px;
+  }
+  form input {
+    width: 120px;
+  }
+  .search-results {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-results .card .thumbnail {
+    height: 100px;
+  }
+  .search-results .card .thumbnail img {
+    bottom: 100%;
+  }
+}/*# sourceMappingURL=style.css.map */
